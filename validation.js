@@ -1,5 +1,5 @@
 // validation
-const Joi = require('@hapi/joi');
+import Joi from '@hapi/joi';
 
 
 
@@ -20,5 +20,7 @@ const loginValidation = (data) => {
     return schema.validate(data);
 }
 
-module.exports.registerValidation = registerValidation;
-module.exports.loginValidation = loginValidation;
+// module.exports.registerValidation = registerValidation;
+// module.exports.loginValidation = loginValidation;
+
+export {registerValidation, loginValidation};

@@ -1,11 +1,14 @@
-const router = require("express").Router();
+// const router = require("express").Router();
+import express from 'express';
 // const bcrypt = require("bcryptjs/dist/bcrypt");
-const User = require("../models/User");
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const dotenv = require('dotenv');
-const {registerValidation, loginValidation} = require('../validation');
 
+import User from '../models/User.js';
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
+import { registerValidation, loginValidation } from '../validation.js';
+
+const router = express.Router();
 router.post('/register', async (req, res) => {
     // lets validate the user data before creating user
     const {error} = registerValidation(req.body); 
@@ -54,4 +57,5 @@ router.post('/login',async (req, res) => {
 });
 
 
-module.exports = router;
+// module.exports = router;
+export default router;

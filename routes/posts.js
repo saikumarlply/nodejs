@@ -1,5 +1,8 @@
-const router = require("express").Router();
-const verify = require('../verifyToken');
+import express from 'express';
+import verify from '../verifyToken.js';
+
+const router = express.Router();
+
 router.get('/', verify, (req, res)=>{
     res.json({posts:{
         title: 'my first post',
@@ -7,4 +10,5 @@ router.get('/', verify, (req, res)=>{
     }});
 });
 
-module.exports = router;
+// module.exports = router;
+export default router;
