@@ -9,6 +9,9 @@ dotenv.config();
 import authRoute from './routes/auth.js';
 import postRoute from './routes/posts.js';
 import userRoute from './routes/user.js';
+// server PORT
+const PORT = process.env.PORT | 3000;
+
 mongoose.connect(process.env.DB_CONNECT,
 {useNewUrlParser:true},
 () => console.log('connected to mongo db'))
@@ -18,5 +21,5 @@ app.use('/api/user', authRoute);
 app.use('/api/posts',postRoute);
 app.use('/api/user',userRoute);
 
-app.listen(3000, () => console.log('server up and running'));
+app.listen(PORT, () => console.log('server up and running'));
 
