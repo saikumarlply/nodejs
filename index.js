@@ -11,6 +11,7 @@ import postRoute from './routes/posts.js';
 import userRoute from './routes/user.js';
 // server PORT
 const PORT = process.env.PORT || 3000;
+const server_host = process.env.YOUR_HOST || '0.0.0.0';
 
 mongoose.connect(process.env.DB_CONNECT,
 {useNewUrlParser:true},
@@ -21,5 +22,5 @@ app.use('/api/user', authRoute);
 app.use('/api/posts',postRoute);
 app.use('/api/user',userRoute);
 
-app.listen(PORT, () => console.log('server up and running at PORT ', PORT));
+app.listen(PORT, server_host, () => console.log('server up and running at PORT ', PORT));
 
