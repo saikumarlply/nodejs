@@ -10,7 +10,7 @@ import authRoute from './routes/auth.js';
 import postRoute from './routes/posts.js';
 import userRoute from './routes/user.js';
 // server PORT
-const PORT = process.env.PORT | 3000;
+const PORT = process.env.PORT || 3000;
 
 mongoose.connect(process.env.DB_CONNECT,
 {useNewUrlParser:true},
