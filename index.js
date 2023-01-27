@@ -40,7 +40,8 @@ app.use(function (req, res, next) {
 });
 app.use('/api/user', authRoute);
 app.use('/api/posts',postRoute);
-app.use('/api/user',userRoute);
+// app.use('/api/user',userRoute);
+app.use('/api/SSMMS-user',userRoute);
 
 app.listen(PORT, server_host, () => console.log('server up and running at PORT ', PORT));
 
