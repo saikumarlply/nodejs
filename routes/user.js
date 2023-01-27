@@ -10,6 +10,12 @@ router.post('/', verify, async (req, res)=>{
     res.json(user);
 });
 
+router.get('/', verify, async (req, res)=>{
+    console.log("userName", req.query.userName);
+    const user = await SSMMSUser.findOne({userName:req.query.userName});
+    res.json(user);
+});
+
 router.post('/create', verify, async (req, res)=>{
     // lets validate the user data before creating user
     const {error} = SSMMSuserValidation(req.body); 
@@ -27,13 +33,14 @@ router.post('/create', verify, async (req, res)=>{
         villageName: req.body.villageName,
         userName: req.body.userName,
         userPassword: req.body.userPassword,
+        email: req.body.email
     });
     try{
         const savedUser = await user.save();
         res.send({user: savedUser});
     }
     catch(err){
-        console.log(err);
+        console.log("error ",err);
         res.status(400).send(err);
     }
     // res.send(user);

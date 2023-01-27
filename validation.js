@@ -19,6 +19,7 @@ const SSMMSuserValidation = (data) => {
         villageName:Joi.string().min(1).required(),
         userName:Joi.number().required(),
         userPassword:Joi.string().min(6).required(),
+        email:Joi.string().min(6).required(),
     });
     return schema.validate(data);
 }

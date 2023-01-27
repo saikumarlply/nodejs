@@ -21,6 +21,13 @@ const SSMMSuserSchema = new mongoose.Schema({
         min: 1,
         max: 255
     },
+    email:{
+        type: String,
+        required: true,
+        min: 1,
+        max: 255
+    },
+
 
 });
 
