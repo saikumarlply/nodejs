@@ -29,21 +29,25 @@ router.post('/create', verify, async (req, res)=>{
     // var hashedPassword = bcrypt.hashSync(req.body.password, salt);
     // const salt = await bcrypt.gensalt(10);
     // const hashPassword = await bcrypt.hash(req.body.password, salt);
-    const user = new SSMMSUser({
+    const update = {
         villageName: req.body.villageName,
         userName: req.body.userName,
         userPassword: req.body.userPassword,
         email: req.body.email
-    });
+    }
     try{
-        const savedUser = await user.save();
-        res.send({user: savedUser});
+        const query = { userName: req.body.userName };
+        const options = { upsert: true };
+        const user = await SSMMSUser.findOneAndUpdate(query, update, {
+            new: true,
+            upsert: true
+          });
+          res.json(user);
     }
     catch(err){
         console.log("error ",err);
         res.status(400).send(err);
     }
-    // res.send(user);
 });
 
 // module.exports = router;
