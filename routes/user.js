@@ -11,8 +11,8 @@ router.post('/', verify, async (req, res)=>{
 });
 
 router.get('/', verify, async (req, res)=>{
-    console.log("userName", req.query.userName);
-    const user = await SSMMSUser.findOne({userName:req.query.userName});
+    console.log("email", req.query.email);
+    const user = await SSMMSUser.findOne({email:req.query.email});
     res.json(user);
 });
 
@@ -36,7 +36,7 @@ router.post('/create', verify, async (req, res)=>{
         email: req.body.email
     }
     try{
-        const query = { userName: req.body.userName };
+        const query = { email: req.body.email };
         const options = { upsert: true };
         const user = await SSMMSUser.findOneAndUpdate(query, update, {
             new: true,
