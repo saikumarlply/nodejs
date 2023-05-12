@@ -1,4 +1,5 @@
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 mongoose.connect('mongodb+srv://root:Shivaji.94@cluster0.i0dpk.mongodb.net/test?retryWrites=true&w=majority',
 {
     useNewUrlParser: true,
